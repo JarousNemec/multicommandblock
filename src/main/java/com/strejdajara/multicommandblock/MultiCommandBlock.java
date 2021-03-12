@@ -1,5 +1,6 @@
 package com.strejdajara.multicommandblock;
 
+import com.strejdajara.multicommandblock.util.RegistryHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -25,6 +26,9 @@ public class MultiCommandBlock
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
 
+    //This is the mod ID var.
+    public static final String MOD_ID = "multicommandblock";
+
     public MultiCommandBlock() {
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
@@ -34,6 +38,9 @@ public class MultiCommandBlock
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
         // Register the doClientStuff method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
+
+        //Add custome items to Game
+        RegistryHandler.init();
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
