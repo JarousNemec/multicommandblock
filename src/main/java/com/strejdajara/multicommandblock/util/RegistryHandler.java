@@ -6,10 +6,14 @@ import com.strejdajara.multicommandblock.blocks.SapphireOre;
 import com.strejdajara.multicommandblock.items.ItemModel;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.ForgeRegistry;
+import net.minecraftforge.registries.IForgeRegistry;
 
 public class RegistryHandler {
 

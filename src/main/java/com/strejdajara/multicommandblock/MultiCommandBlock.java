@@ -8,6 +8,7 @@ import net.minecraft.command.CommandSource;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
+import net.minecraftforge.client.event.ClientChatEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -32,6 +33,8 @@ public class MultiCommandBlock {
 
     //This is the mod ID var.
     public static final String MOD_ID = "multicommandblock";
+    //private static final MyCommandServerHandler mcsh = new MyCommandServerHandler();
+    //private static final MyCommandClientHandler mcch = new MyCommandClientHandler();
 
     public MultiCommandBlock() {
         // Register the setup method for modloading
@@ -42,18 +45,31 @@ public class MultiCommandBlock {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
         // Register the doClientStuff method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
-
+/*
+        //register MyCommandHandler
+        MyCommandHandler myCommandHandler = new MyCommandHandler();
+        FMLJavaModLoadingContext.get().getModEventBus().register(myCommandHandler);
+        MinecraftForge.EVENT_BUS.register(myCommandHandler);
+*/
         //Add custome items to Game
         RegistryHandler.init();
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+        //MinecraftForge.EVENT_BUS.register(mcch);
+        //MinecraftForge.EVENT_BUS.register(mcsh);
 
         /*ServerPlayerEntity playerEntity = Minecraft.getInstance().getIntegratedServer().getPlayerList().getPlayers().get(0);
         Minecraft.getInstance().getIntegratedServer().getCommandManager().handleCommand(playerEntity.getCommandSource(), "say hello world");*/
 
 
+
     }
+/*
+    @SubscribeEvent
+    public void registerBlocks(RegistryEvent.Register<Block> event, ClientChatEvent CliEv) {
+        event.getRegistry().registerAll(new MyCommandClientHandler(CliEv));
+    }*/
 
     public static Logger getLogger() {
         return LOGGER;
